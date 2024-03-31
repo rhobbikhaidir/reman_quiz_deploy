@@ -79,7 +79,7 @@ const Result: FC = (): ReactElement => {
                     });
                 }}
               >
-                New Game
+                New Game testing
               </button>
               <button
                 className="mt-[1rem] mb-[1rem] w-[40%] text-[#fff] tracking-[1px] bg-[#008fed] text-lg font-bold h-[2.4rem] border-none rounded-full"
