@@ -27,9 +27,9 @@ const Topics: FC = (): ReactElement => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log('Submitted:', name);
+    navigate('/play')
     onCloseModal();
   };
-  const handleNavigate = () => navigate('/play');
 
   return (
     <>
@@ -67,7 +67,6 @@ const Topics: FC = (): ReactElement => {
               onClose={onCloseModal}
               handleChange={handleChange}
               handleSubmit={handleSubmit}
-              handleNavigate={handleNavigate}
             />
           </div>
         </div>
