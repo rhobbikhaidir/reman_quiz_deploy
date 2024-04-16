@@ -23,6 +23,8 @@ const Result: FC = (): ReactElement => {
   const totalQuestions = quizContext!.state.questions.length;
   const correctAnswer = quizContext!.state.assertedAnswerCount;
   const score = quizContext?.state.score;
+  const namaUser = localStorage.getItem("user")
+  console.log('duuuaaarrrr mmk :', namaUser);
 
   const calcAssertPercentage = () => {
     const assertPercentage = (correctAnswer * 100) / totalQuestions;
@@ -41,7 +43,9 @@ const Result: FC = (): ReactElement => {
               <p className="text-white text-lg font-bold uppercase">
                 Congratulations !!! 👏👏👏
               </p>
-              <p className="text-grey text-2xl font-normal font-mono">{name}</p>
+              <p className="text-grey text-2xl font-normal font-mono">
+                {namaUser}
+              </p>
             </div>
           </FireworkComponent>
         ) : (
@@ -49,7 +53,9 @@ const Result: FC = (): ReactElement => {
             <p className="text-white text-lg font-bold uppercase">
               Congratulations !!! 👏👏👏
             </p>
-            <p className="text-grey text-2xl font-normal font-mono">{name}</p>
+            <p className="text-grey text-2xl font-normal font-mono">
+              {namaUser}
+            </p>
           </div>
         )}
         <div className="flex justify-center items-center bg-[#FFFF]">

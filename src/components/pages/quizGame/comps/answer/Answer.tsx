@@ -50,8 +50,8 @@ const Answer: FC<AnswerProps> = ({
           startAudio();
         }}
       >
-        <div className="flex h-[3rem] items-center text-base font-semibold cursor-pointer">
-          <div className="flex-[10%] ml-[10px] text-white text-center">
+        <div className="flex h-[3rem] items-center justify-center text-base font-semibold cursor-pointer">
+          <div className="flex-[10%] items-center justify-center ml-[10px] text-white text-center">
             <p className="answer-letter p-[5px] bg-[#008fed] rounded-[10px]">
               {answerLetterMapping[index]}
             </p>

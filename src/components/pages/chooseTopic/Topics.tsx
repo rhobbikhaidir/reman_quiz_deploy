@@ -21,6 +21,8 @@ const Topics: FC = (): ReactElement => {
   };
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData(e.target.value);
+    localStorage.setItem('user', e.target.value);
+    console.log('wkwkwk :', e.target.value);
   };
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
