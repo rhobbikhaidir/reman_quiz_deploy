@@ -58,17 +58,18 @@ const Question: FC = (): ReactElement => {
 
         <div className="flex">
           <div
-            className={`help-btn action-btn ${helpDisabled}`}
+            className={`help-btn action-btn cursor-pointer ${helpDisabled}`}
             onClick={handleHelpUser}
           >
             <p className="text-center leading-[2.8rem]">Help</p>
             <span className="help-chances">{helpChances}</span>
           </div>
 
-          <div className="next-btn action-btn" onClick={handleNextQuestion}>
-            <span className="text-center leading-[2.8rem] cursor-pointer">
-              Next Question
-            </span>
+          <div
+            className="next-btn action-btn cursor-pointer"
+            onClick={handleNextQuestion}
+          >
+            <span className="text-center leading-[2.8rem]">Next Question</span>
           </div>
         </div>
       </div>
