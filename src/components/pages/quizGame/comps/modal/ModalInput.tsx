@@ -6,13 +6,11 @@ interface ModalProps {
   onClose: () => void;
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-  handleNavigate: () => void;
 }
 
 const ModalEnteredName: FC<ModalProps> = ({
   isOpen,
   onClose,
-  handleNavigate,
   handleChange,
   handleSubmit,
 }): ReactElement => {
@@ -48,11 +46,10 @@ const ModalEnteredName: FC<ModalProps> = ({
               </div>
               <div className="flex justify-center items-center">
                 <button
-                  type="button"
+                  type="submit"
                   disabled={isDisable}
                   style={{ background: isDisable ? 'skyblue' : '#1C90F3' }}
                   className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded cursor-pointer"
-                  onClick={() => handleNavigate()}
                 >
                   Confirm testing
                 </button>
