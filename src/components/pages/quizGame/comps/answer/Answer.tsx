@@ -2,7 +2,7 @@ import { FC, ReactElement } from 'react';
 import wrongAudio from '../../../../assets/audios/wrongAudio.mp3'
 import correctAudio from '../../../../assets/audios/correctAudio.mp3';
 
-interface AnswerProps {
+export interface AnswerProps {
   answer: string;
   index: number;
   onSelectAnswer: (answer: string) => void;
@@ -39,20 +39,19 @@ const Answer: FC<AnswerProps> = ({
       new Audio(wrongAudio).play();
     }
   };
-  console.log('checking---> 1', answer);
-  console.log('checking---> 2', answerLetterMapping[index]);
+  
   return (
     <>
       <div
-        className={`answer ${isCorrect} ${isWrong} ${isDisabled} ${isHelp}`}
+        className={`answer flex items-center cursor-pointer ${isCorrect} ${isWrong} ${isDisabled} ${isHelp}`}
         onClick={() => {
           onSelectAnswer(answer);
           startAudio();
         }}
       >
-        <div className="flex h-[3rem] items-center justify-center text-base font-semibold cursor-pointer">
+        <div className="flex h-[3rem] items-center justify-center text-base font-semibold bg-red">
           <div className="flex-[10%] items-center justify-center ml-[10px] text-white text-center">
-            <p className="answer-letter p-[5px] bg-[#008fed] rounded-[10px]">
+            <p className="answer-letter px-6 py-1 bg-[#004225] rounded-[10px]">
               {answerLetterMapping[index]}
             </p>
           </div>

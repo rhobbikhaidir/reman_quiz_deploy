@@ -1,7 +1,6 @@
 import { FC, ReactElement, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { QuizContext, allowedActions } from '../../../../contexts/QuizContext';
-import { TopicsContext, TopicsContextType } from '../../../chooseTopic/Topics';
 import { PointIcon } from '../../../../assets/svg/icons';
 import FireworkComponent from '../fireworksAnimate/FireworkComponent';
 import {
@@ -13,47 +12,42 @@ import {
 
 const Result: FC = (): ReactElement => {
   const navigate = useNavigate();
-  const topicsContext = useContext(TopicsContext) as TopicsContextType;
   const quizContext = useContext(QuizContext);
   const dispatch = quizContext?.dispatch;
-  console.log('testing :', topicsContext?.formData);
-  // const { topicsContext.formData } = item;
-
-  const name = topicsContext ? topicsContext.formData : 'unkwon';
   const totalQuestions = quizContext!.state.questions.length;
   const correctAnswer = quizContext!.state.assertedAnswerCount;
   const score = quizContext?.state.score;
-  const namaUser = localStorage.getItem("user")
-  console.log('duuuaaarrrr mmk :', namaUser);
+  const namaUser = localStorage.getItem('user');
+  console.log('namaUser:', namaUser);
 
   const calcAssertPercentage = () => {
     const assertPercentage = (correctAnswer * 100) / totalQuestions;
     return assertPercentage;
   };
-
-  console.log('check name result--->', name);
-  console.log('score--->', score);
+  const removeNamaUser = () => {
+    localStorage.removeItem('user');
+  };
 
   return (
     <>
       <div className="result-animate-container w-[100%] text-center tracking-[1px]">
         {score !== undefined && score >= value ? (
           <FireworkComponent>
-            <div className="w-[100%] pt-[10vh] bg-[#008fed] py-[1.5rem] px-[.2rem]">
+            <div className="w-[100%] pt-[10vh] bg-[#004225] py-[1.5rem] px-[.2rem]">
               <p className="text-white text-lg font-bold uppercase">
-                Congratulations !!! 👏👏👏
+                Congratulations 👏👏👏
               </p>
-              <p className="text-grey text-2xl font-normal font-mono">
+              <p className="text-white text-2xl font-bold uppercase font-serif">
                 {namaUser}
               </p>
             </div>
           </FireworkComponent>
         ) : (
-          <div className="w-[100%] pt-[10vh] bg-[#008fed] py-[1.5rem] px-[.2rem]">
+          <div className="w-[100%] pt-[10vh] bg-[#004225] py-[1.5rem] px-[.2rem]">
             <p className="text-white text-lg font-bold uppercase">
-              Congratulations !!! 👏👏👏
+              Congratulations 👏👏👏
             </p>
-            <p className="text-grey text-2xl font-normal font-mono">
+            <p className="text-white text-2xl uppercase font-semibold font-serif mt-1">
               {namaUser}
             </p>
           </div>
@@ -75,7 +69,7 @@ const Result: FC = (): ReactElement => {
             </p>
             <div className="flex justify-center gap-16">
               <button
-                className="mt-[1rem] mb-[1rem] w-[40%] text-[#fff] tracking-[1px] bg-[#008fed] text-lg font-bold h-[2.4rem] border-none rounded-full"
+                className="mt-[1rem] mb-[1rem] w-[40%] text-[#fff] tracking-[1px] bg-[#004225] text-lg font-bold h-[2.4rem] border-none rounded-full"
                 onClick={() => {
                   stopPlaySong();
                   dispatch &&
@@ -85,13 +79,14 @@ const Result: FC = (): ReactElement => {
                     });
                 }}
               >
-                New Game testing
+                New Game
               </button>
               <button
-                className="mt-[1rem] mb-[1rem] w-[40%] text-[#fff] tracking-[1px] bg-[#008fed] text-lg font-bold h-[2.4rem] border-none rounded-full"
+                className="mt-[1rem] mb-[1rem] w-[40%] text-[#fff] tracking-[1px] bg-[#004225] text-lg font-bold h-[2.4rem] border-none rounded-full"
                 onClick={() => {
                   stopPlaySong();
                   navigate('/');
+                  removeNamaUser();
                 }}
               >
                 Exit
