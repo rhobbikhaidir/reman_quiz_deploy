@@ -177,6 +177,7 @@
   font-weight: bold;
   text-align: center;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .action-btn:disabled {
@@ -184,11 +185,12 @@
   height: 2.8rem;
   margin-top: 2rem; 
   color: #fef;
-  background-color: #87CEEB;
+  background-color: #549177;
   font-size: large;
   font-weight: bold;
   text-align: center;
   border-radius: 5px;
+  cursor: not-allowed;
 }
 
 
