@@ -15,6 +15,7 @@ const Question: FC = (): ReactElement => {
 
   const helpDisabled =
     helpChances && helpChances <= 0 ? 'help-disabled disabled' : null;
+    console.log(quizContext, '****contex')
 
   console.log('pertanyaan --->', currentQuestion?.question);
   console.log('answers --->', answers);
@@ -55,8 +56,9 @@ const Question: FC = (): ReactElement => {
             <span className="help-chances">{helpChances}</span>
           </div>
 
-          <div
-            className="next-btn action-btn"
+          <button
+            disabled={quizContext?.state.isNext}
+            className='next-btn action-btn'
             onClick={() =>
               dispatch &&
               dispatch({ type: allowedActions.NEXT_QUESTION, payload: null })
@@ -65,7 +67,7 @@ const Question: FC = (): ReactElement => {
             <span className="text-center leading-[2.8rem] cursor-pointer">
               Next Question
             </span>
-          </div>
+          </button>
         </div>
       </div>
     </div>
