@@ -14,7 +14,6 @@ const Question: FC = (): ReactElement => {
   const askedHelp = quizContext?.state.askedHelp;
   const helpDisabled =
     helpChances && helpChances <= 0 ? 'help-disabled disabled' : null;  
-    console.log(quizContext, '****contex')
 
   const handleSelectedAnswer = ({ value }: { value: string }) => {
     dispatch &&
