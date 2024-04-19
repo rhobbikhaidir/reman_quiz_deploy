@@ -12,16 +12,35 @@ const Question: FC = (): ReactElement => {
   const correctAnswer = quizContext?.state.correctAnswer;
   const helpChances = quizContext?.state.helpChances;
   const askedHelp = quizContext?.state.askedHelp;
-
   const helpDisabled =
     helpChances && helpChances <= 0 ? 'help-disabled disabled' : null;
     console.log(quizContext, '****contex')
 
-  console.log('pertanyaan --->', currentQuestion?.question);
-  console.log('answers --->', answers);
+  const handleSelectedAnswer = ({ value }: { value: string }) => {
+    dispatch &&
+      dispatch({
+        type: allowedActions.SELECT_ANSWER,
+        payload: value,
+      });
+  };
+
+  const handleHelpUser = () => {
+    dispatch && dispatch({ type: allowedActions.ASK_HELP, payload: null });
+  };
+
+  const handleNextQuestion = () => {
+    if (selectedAnswer) {
+      dispatch &&
+        dispatch({
+          type: allowedActions.NEXT_QUESTION,
+          payload: null,
+        });
+      console.log('lock the answer !!!');
+    }
+  };
 
   return (
-    <div className='flex justify-center'>
+    <div className="flex justify-center">
       <div className="question container">
         <p className="question-text">{currentQuestion?.question}</p>
         <div className="mt-[1rem] answers">
@@ -30,13 +49,7 @@ const Question: FC = (): ReactElement => {
               answer={answer}
               key={index}
               index={index}
-              onSelectAnswer={(answer) =>
-                dispatch &&
-                dispatch({
-                  type: allowedActions.SELECT_ANSWER,
-                  payload: answer,
-                })
-              }
+              onSelectAnswer={() => handleSelectedAnswer({ value: answer })}
               selectedAnswer={selectedAnswer}
               correctAnswer={correctAnswer}
               askedHelp={askedHelp}
@@ -46,28 +59,19 @@ const Question: FC = (): ReactElement => {
 
         <div className="flex">
           <div
-            className={`help-btn action-btn ${helpDisabled}`}
-            onClick={() =>
-              dispatch &&
-              dispatch({ type: allowedActions.ASK_HELP, payload: null })
-            }
+            className={`help-btn action-btn cursor-pointer ${helpDisabled}`}
+            onClick={handleHelpUser}
           >
             <p className="text-center leading-[2.8rem]">Help</p>
             <span className="help-chances">{helpChances}</span>
           </div>
 
-          <button
-            disabled={quizContext?.state.isNext}
-            className='next-btn action-btn'
-            onClick={() =>
-              dispatch &&
-              dispatch({ type: allowedActions.NEXT_QUESTION, payload: null })
-            }
+          <div
+            className="next-btn action-btn cursor-pointer"
+            onClick={handleNextQuestion}
           >
-            <span className="text-center leading-[2.8rem] cursor-pointer">
-              Next Question
-            </span>
-          </button>
+            <span className="text-center leading-[2.8rem]">Next Question</span>
+          </div>
         </div>
       </div>
     </div>

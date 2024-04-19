@@ -41,17 +41,17 @@ const ModalEnteredName: FC<ModalProps> = ({
                   value={formData}
                   onChange={handleChange}
                   placeholder="enter your name here"
-                  className="w-full px-3 py-2 border rounded focus:outline-none focus:border-blue-500 text-center"
+                  className="w-full px-3 py-2 border rounded focus:outline-none focus:border-black text-center"
                 />
               </div>
               <div className="flex justify-center items-center">
                 <button
                   type="submit"
                   disabled={isDisable}
-                  style={{ background: isDisable ? 'skyblue' : '#1C90F3' }}
+                  style={{ background: isDisable ? 'lightgreen' : '#004225' }}
                   className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded cursor-pointer"
                 >
-                  Confirm testing
+                  Confirm
                 </button>
               </div>
             </form>
